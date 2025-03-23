@@ -1,0 +1,25 @@
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20 # Using Node.js 20
+    commands:
+      - echo Installing dependencies...
+      - yarn install # Install dependencies using Yarn
+
+  build:
+    commands:
+      - echo Building the Vite app...
+      - yarn build # Build the Vite app using Yarn
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Uploading build artifacts...
+
+artifacts:
+  files:
+    - dist/**/* # This assumes your Vite build output is in the "dist" folder
+
+cache:
+  paths:
+    - node_modules/**/* # Cache node_modules to speed up future builds
